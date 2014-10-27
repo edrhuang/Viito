@@ -4,8 +4,4 @@ class ApplicationController < ActionController::Base
 
 	RSpotify.authenticate(ENV["SPOTIFY_ID"], ENV["SPOTIFY_SECRET"])
 
-
-
-
-	# binding.pry
 end
