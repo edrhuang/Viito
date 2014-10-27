@@ -5,4 +5,7 @@ Rails.application.routes.draw do
   root 'users#index'
   
   get 'auth/spotify/callback', to: 'users#spotify'
+
+  post 'sessions' => 'sessions#create'
+  delete 'sessions' => 'sessionsdestroy'
 end
