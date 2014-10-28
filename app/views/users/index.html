@@ -1,2 +1,24 @@
-<h1>Welcome to Viito</h1>
-<%= link_to 'Sign in with Spotify', '/auth/spotify' %>
+<%= render partial: 'nav_index' %>
+<div class="content">
+	<div class="container">
+		<h1>Welcome to Viito</h1>
+		
+		<% if logged_in? %>
+		<!-- logged in welcome message -->
+			<% if flash[:notice] %>
+				<div class="notice"><%= flash[:notice] %></div>
+			<% end %>
+
+		<%else%>
+			<%= link_to 'Connect with Spotify', '/auth/spotify', class: "button paper-raise" %>
+		<%end%>
+
+	</div>
+</div>
+
+
+
+
+
+
+

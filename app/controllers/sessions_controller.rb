@@ -1,23 +1,21 @@
 class SessionsController < ApplicationController 
 
 	def create
-		@user = User.find_by :s_id => params[:s_id]
+		@user = User.find_by :id => params[:id]
 
 		if @user.nil? 
-			flash[:error] = "Cant login with Spotify"
-		elsif @user.authenticate params
-		
+			# redirect to spotify to confirm account
+			user.spotify
+			session[:current_user_id] = user.id
 		end
 
-
-		
 	end
 	
 	def destroy 
 		session[:current_user_id] = nil 
 		flash[:notice] = "You have been logged out"
 
-		redirect to root_path
+		redirect_to root_url
 	end
 
 end

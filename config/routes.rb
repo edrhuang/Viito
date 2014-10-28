@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
 
-  resources :playlists
   
-  root 'users#index'
-  
-  get 'auth/spotify/callback', to: 'users#spotify'
+	root 'users#index'
 
-  post 'sessions' => 'sessions#create'
-  delete 'sessions' => 'sessionsdestroy'
+	get 'auth/spotify/callback', to: 'users#spotify'
+
+	get 'sessions' => 'sessions#create'
+
+	get '/logout', :to => 'sessions#destroy'
+
+	resources :users
 end

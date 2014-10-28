@@ -1,6 +1,5 @@
 class User < ActiveRecord::Base
-
-	validates :s_hash, presence: true
-	validates :s_id, presence: true 
-
+	# saving hash as text
+	serialize :s_hash, Hash
+	#returns text to hash 
 end
