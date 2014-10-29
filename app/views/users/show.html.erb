@@ -1,0 +1,82 @@
+
+
+<div class="left-bar col-md-2">
+	
+	<div class="user-info">
+		<img class="img-circle" src="<%= @user.image[0]["url"] %>" >
+		<h3><%= @user.name%></h3>
+	</div>
+
+	<div class="stuff">
+		<ul class="playlists">
+			<% if logged_in? %>
+			<% @user.rsuser.playlists({limit: 50}).each do |list| %>
+				<span class="glyphicon glyphicon-music"></span>
+				<li>
+					<a href="#">
+					<%= list.name %>
+					</a>
+				</li>
+			<%end%>
+		</ul>
+
+
+	<%else%>
+		<%= link_to 'Connect with Spotify', '/auth/spotify', class: "button paper-raise" %>
+	<%end%>
+		
+	</div>
+
+
+
+</div>
+
+<div class="music">
+	<%= link_to 'Logout', '/logout' %>
+	
+
+	<div class="col-md-8">
+
+		<h3 class="p_title"><%= @p_title %></h3>
+		<div class="table">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Songs</th>
+						<th>Artist</th>
+						<th>Length</th>
+					</tr>
+				</thead>
+
+				<% @songs.each do |sng| %>
+				<tbody>
+
+					<tr>
+						<td><%= sng.artists[0].name %></td>
+						<td><%= sng.name %></td>
+						<td>
+							<%= Time.at((sng.duration_ms)/1000).strftime("%M:%S") %>
+						</td>
+					</tr>
+					
+				</tbody>
+				<% end%>
+
+			</table>
+		</div>
+
+
+
+				
+	</div>
+
+</div> 
+
+
+
+
+		
+
+
+		
+

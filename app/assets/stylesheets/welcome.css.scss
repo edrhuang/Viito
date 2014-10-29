@@ -1,3 +1,66 @@
 // Place all the styles related to the welcome controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+$spotify-green: rgb(132, 189, 0);
+$spotify-black: rgb(0, 0, 0);
+$spotify-grey: rgb(130, 130, 130);
+$spotify-sand: rgb(236, 235, 232);
+$spotify-white: rgb(255, 255, 255);
+
+
+
+a:hover {
+	text-decoration: none; 
+	color: $spotify-sand;
+}
+
+.content {
+	margin-top: 400px;
+}
+
+.content h1 {
+	text-align: center;
+}
+.button {
+  position: relative;
+  display: block;
+  width: 400px;
+  margin: 20px auto;
+  padding: 10px;
+  font-size: 20px;
+  
+  background-color: $spotify-green;
+  border: 1px solid #ccc;
+
+  color: $spotify-white;
+  text-align: center;
+  text-decoration: none;
+  
+  transform-style: flat;
+  transition: all 250ms ease-out;
+  
+  &:before,
+  &:after {
+      content: "";
+      position: absolute;
+      z-index: -2;
+    	transition: all 250ms ease-out;
+  }
+}
+.paper-raise {
+  &:before {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  &:hover {
+    border: 1px solid $spotify-green;
+    
+    &:before {
+			box-shadow: 0 15px 10px -10px rgba(31, 31, 31, 0.5);
+    }
+  }
+}

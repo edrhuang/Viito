@@ -1,13 +1,16 @@
 Rails.application.routes.draw do
 
-  
-	root 'users#index'
+ 
+	root 'welcome#index'
 
-	get 'auth/spotify/callback', to: 'users#spotify'
+	get 'users/index'
+
+	get 'auth/spotify/callback', to: 'welcome#spotify'
 
 	get 'sessions' => 'sessions#create'
 
 	get '/logout', :to => 'sessions#destroy'
 
 	resources :users
+	resources :welcome
 end

@@ -7,6 +7,8 @@ gem 'dotenv-rails', :groups => [:development, :test]
 gem 'dotenv'
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
+gem 'typhoeus'
+gem 'awesome_print'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.6'

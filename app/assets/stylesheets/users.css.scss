@@ -1,62 +1,82 @@
-
 $spotify-green: rgb(132, 189, 0);
 $spotify-black: rgb(0, 0, 0);
 $spotify-grey: rgb(130, 130, 130);
 $spotify-sand: rgb(236, 235, 232);
 $spotify-white: rgb(255, 255, 255);
 
-
-
-a:hover {
-	text-decoration: none; 
-	color: $spotify-sand;
+body{
+  border-top: 3px solid $spotify-green;
 }
 
-.content {
-	margin-top: 400px;
-}
-
-.content h1 {
-	text-align: center;
-}
-.button {
-  position: relative;
-  display: block;
-  width: 400px;
-  margin: 20px auto;
-  padding: 10px;
-  font-size: 20px;
-  
-  background-color: $spotify-green;
-  border: 1px solid #ccc;
-
-  color: $spotify-white;
+h3 {
   text-align: center;
+  color: $spotify-grey;
+}
+
+.left-bar {
+  background-color: $spotify-black;
+  clear: both;
+  float: left;
+}
+
+.user-info {
+  padding: 15px;
+  margin: 30px 15px 0 15px;
+  background-color: white;
+}
+
+.user-info img{
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+  display: block;
+  border: 3px solid $spotify-green;
+}
+
+.p-pic{
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  display: block;
+}
+
+.p_title{
+  font-size: 30px;
+  text-transform: uppercase;
+  color: $spotify-green
+}
+
+.playlists {
+  padding: 20px 20px;
+}
+
+.stuff span{
+  float: left;
+}
+
+.stuff{
+  background-color: $spotify-grey;
+  display: block;
+  margin: 15px;
+}
+
+.stuff ul {
+  list-style: none;
+}
+
+.stuff ul li {
+  margin-bottom: 2px;
+  margin-left: 20px;
+}
+
+.stuff ul li a {
   text-decoration: none;
-  
-  transform-style: flat;
-  transition: all 250ms ease-out;
-  
-  &:before,
-  &:after {
-      content: "";
-      position: absolute;
-      z-index: -2;
-    	transition: all 250ms ease-out;
-  }
+  color: $spotify-sand;
 }
-.paper-raise {
-  &:before {
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
-  &:hover {
-    border: 1px solid $spotify-green;
-    
-    &:before {
-			box-shadow: 0 15px 10px -10px rgba(31, 31, 31, 0.5);
-    }
-  }
+
+.stuff ul li a:hover{
+  color: $spotify-green;
 }
+
+
+
