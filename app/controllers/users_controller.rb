@@ -8,12 +8,19 @@ class UsersController < ApplicationController
 
 		@user = User.find_by_id(params[:id])
 		
-		@p_title = @user.rsuser.playlists[3].name
+		
 		@songs = @user.rsuser.playlists[3].tracks
 
-		# num = songs.length
-		binding.pry
+		# binding.pry
+	end
 
+	def get_songs 
+		idx = params[:playlist_id].to_i
+		
+		# @p_title = current_user.playlists[idx].name
+		# binding.pry
+		@songs = current_user.playlists[idx].tracks
+		render json: @songs
 	end
 
 

@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
 		self.rsuser.id
 	end
 
-	def playlists(limit)
+	def playlists()
 		self.rsuser.playlists
 	end
 

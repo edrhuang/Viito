@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
 	
-	helper_method :current_user_id, :logged_in?
+	helper_method :current_user, :logged_in?
 	
 	Dotenv.load 
 
@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
 
 
 	def current_user 
-		@current_user ||= User.find(session[:current_user_id]) if !@current_user
+		@current_user ||= User.find(session[:current_user_id])
 	end
 
 	def is_authenticated?
