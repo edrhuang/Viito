@@ -8,7 +8,7 @@ body{
   border-top: 3px solid $spotify-green;
 }
 
-h3 {
+h3, h4{
   text-align: center;
   color: $spotify-grey;
 }
@@ -22,7 +22,7 @@ h3 {
 .user-info {
   padding: 15px;
   margin: 30px 15px 0 15px;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
 .user-info img{
@@ -48,6 +48,14 @@ h3 {
 
 .playlists {
   padding: 20px 20px;
+}
+.stuff p {
+  font-size: 20px;
+  color: $spotify-white;
+  text-align: center; 
+  padding: 20px 0;
+  border-bottom: 3px solid $spotify-green;
+
 }
 
 .stuff span{
@@ -75,6 +83,16 @@ h3 {
   cursor: pointer;
   color: $spotify-green;
 }
+
+.list-title {
+  text-align: left;
+  margin-top: 26px;
+}
+
+.song-select:hover {
+  color: red;
+}
+
 
 
 

@@ -7,6 +7,15 @@ class User < ActiveRecord::Base
 		self.rsuser.display_name
 	end
 
+	def country 
+		self.rsuser.country
+	end
+
+	def s_id 
+		self.rsuser.id
+	end
+
+
 	def spotify_id 
 		self.rsuser.id
 	end

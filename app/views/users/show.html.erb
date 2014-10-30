@@ -5,9 +5,12 @@
 	<div class="user-info">
 		<img class="img-circle" src="<%= @user.image[0]["url"] %>" >
 		<h3><%= @user.name%></h3>
+		<h4><%= @user.country%></h4>
+		<h4><%= @user.s_id%></h4>
 	</div>
 
 	<div class="stuff">
+		<p>Your Spotify Playlists</p>
 		<ul class="playlists">
 			<% if logged_in? %>
 			<% @user.rsuser.playlists({limit: 50}).each_with_index do |list, index| %>
@@ -38,9 +41,8 @@
 	<%= link_to 'Logout', '/logout' %>
 	
 
-	<div class="col-md-8">
-
-		<h3 id="playlist_title" class=""></h3>
+	<div class="col-md-4 my_plist">
+		<h3 id="playlist_title" class="list-title">Please Choose a Playlist</h3>
 		<div class="table">
 			<table class="table table-striped">
 				<thead>
@@ -48,6 +50,7 @@
 						<th>Songs</th>
 						<th>Artist</th>
 						<th>Length</th>
+						<th>Viito</th>
 					</tr>
 				</thead>
 
@@ -58,7 +61,28 @@
 
 			</table>
 		</div>
+	</div>
 
+	<div class="col-md-4 r_plist">
+		<h3 class="list-title">Viito's List</h3>
+		<div class="table">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Songs</th>
+						<th>Artist</th>
+						<th>Length</th>
+
+					</tr>
+				</thead>
+
+				<tbody id="">
+					
+				</tbody>
+				
+
+			</table>
+		</div>
 	</div>
 
 	
@@ -86,15 +110,25 @@
 
 		var id = $(this).data("id");
 		console.log(id)
-		
+
 		$.ajax({
 			url: "/songs/"+id,
 			dataType: "json"
 		}).success(function(data){
 			// console.log(data);
 			for(var i = 0; i < data.length; i++){
-				console.dir(data[i]);
-				$("#s_title").append("<tr> <td>" + data[i].name + "</td>" + "<td>" + data[i].artists[0].name + "</td>" + "<td>" + data[i].duration_ms + "</td> </tr>")
+				
+				function msToTime(duration) {
+				    var seconds = parseInt((duration/1000)%60),
+				        minutes = parseInt((duration/(1000*60))%60)
+
+				    minutes = (minutes < 10) ? "0" + minutes : minutes;
+				    seconds = (seconds < 10) ? "0" + seconds : seconds;
+
+				    return minutes + ":" + seconds ;
+				}
+
+				$("#s_title").append("<tr> <td>" + data[i].name + "</td>" + "<td>" + data[i].artists[0].name + "</td>" + "<td>" + msToTime(data[i].duration_ms) + "</td>" + "<td><span class='glyphicon glyphicon-remove song-select'></span>" + "</td> </tr>")
 			}
 		})
 	});
@@ -102,6 +136,8 @@
 
 
 </script>
+
+
 
 <!-- Time.at((sng.duration_ms)/1000).strftime("%M:%S") -->
 

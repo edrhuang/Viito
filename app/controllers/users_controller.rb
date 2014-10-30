@@ -8,7 +8,6 @@ class UsersController < ApplicationController
 
 		@user = User.find_by_id(params[:id])
 		
-		
 		@songs = @user.rsuser.playlists[3].tracks
 
 		# binding.pry
