@@ -6,6 +6,7 @@ class WelcomeController < ApplicationController
 		spotify_user = RSpotify::User.new(request.env['omniauth.auth'])
 		# render :json => spotify_user.playlists
 		# flash[:notice] = "You are now logged in with Spotify"
+		p spotify_user
 		hash = spotify_user.to_hash
 		email = hash["email"]
 		
