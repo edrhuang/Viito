@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
 	get 'songs/:playlist_id' => 'users#get_songs'
 
-	get '/auth/spotify/callback', to: 'welcome#spotify'
+	get 'auth/spotify/callback', to: 'welcome#spotify'
 
 	get 'sessions' => 'sessions#create'
 
