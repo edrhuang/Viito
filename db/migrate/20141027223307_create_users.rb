@@ -1,5 +1,8 @@
 class CreateUsers < ActiveRecord::Migration
   def change
-  	remove_column :users, :s_id
+    create_table :users do |t|
+
+      t.timestamps
+    end
   end
 end
