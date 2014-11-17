@@ -16,7 +16,7 @@ class UsersController < ApplicationController
 	def get_songs 
 		idx = params[:playlist_id].to_i
 		
-		# @p_title = current_user.playlists[idx].name
+		@p_title = current_user.playlists[idx].name
 		# binding.pry
 		@songs = current_user.playlists[idx].tracks
 		render json: @songs
