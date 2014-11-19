@@ -13,6 +13,8 @@ Rails.application.routes.draw do
 
 	get '/logout', :to => 'sessions#destroy'
 
+	get 'songs_echowrap' => 'users#get_echonest'
+
 	resources :users
 	resources :welcome
 end

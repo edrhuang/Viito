@@ -76,7 +76,7 @@
 					</tr>
 				</thead>
 
-				<tbody id="">
+				<tbody id="viito_list">
 					
 				</tbody>
 				
@@ -92,48 +92,72 @@
 </div> 
 
 <script type="text/javascript">
-	// $.ajax({
-	// 	url: "/songs/2",
-	// 	dataType: "json"
-	// }).success(function(data){
-	// 	for(var i = 0; i < data.length; i++){
-	// 		// console.log(data[i].name);
-	// 	}
-	// })
+	
 
 	$('span').on('click', function(){
 		$('#s_title').empty();
 		$("#playlist_title").empty();
+		$("#viito_list").empty();
 
 		var p_title = $(this).html();
 		$("#playlist_title").append(p_title);
 
 		var id = $(this).data("id");
-		console.log(id)
+		var artistsList = []
+		
+		
+
 
 		$.ajax({
 			url: "/songs/"+id,
-			dataType: "json"
-		}).success(function(data){
-			// console.log(data);
+			dataType: "json",
+			success: successCallback
+		})
+
+
+		function successCallback(data){
+			console.log('before the loop')
+			console.log(artistsList)
 			for(var i = 0; i < data.length; i++){
-				
-				function msToTime(duration) {
-				    var seconds = parseInt((duration/1000)%60),
-				        minutes = parseInt((duration/(1000*60))%60)
+					function msToTime(duration) {
+					    var seconds = parseInt((duration/1000)%60),
+					        minutes = parseInt((duration/(1000*60))%60)
+					    minutes = (minutes < 10) ? "0" + minutes : minutes;
+					    seconds = (seconds < 10) ? "0" + seconds : seconds;
 
-				    minutes = (minutes < 10) ? "0" + minutes : minutes;
-				    seconds = (seconds < 10) ? "0" + seconds : seconds;
+					    return minutes + ":" + seconds ;
+					}
 
-				    return minutes + ":" + seconds ;
-				}
+				artistsList.push(data[i].artists[0].name);
 
 				$("#s_title").append("<tr> <td>" + data[i].name + "</td>" + "<td>" + data[i].artists[0].name + "</td>" + "<td>" + msToTime(data[i].duration_ms) + "</td>" + "<td><span class='glyphicon glyphicon-remove song-select'></span>" + "</td> </tr>")
 			}
-		})
+			
+			randomArtist = artistsList[Math.floor(Math.random()*artistsList.length)];
+			getWeird(randomArtist)
+		}
+
+		console.log("outside")
+        function getWeird(rando){
+
+        	$.ajax({
+			type: "GET",
+			url: "/songs_echowrap?artist_name=" + rando,
+			dataType: "json"
+			        }).success(function(data) {
+			          $("viito_list").empty();
+
+			          for(var i = 0; i < data.length; i++){
+
+			          	$("#viito_list").append("<tr> <td>" + data[i].title + "</td>" + "<td>" + data[i].artist_name + "</td> </tr>")
+			          }
+			          
+					
+			        });
+        }
+        
+
 	});
-
-
 
 </script>
 

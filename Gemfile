@@ -9,6 +9,7 @@ gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
 gem 'typhoeus'
 gem 'awesome_print'
+gem 'echowrap'
 
 group :produciton do 
 	gem 'rails_12factor'
